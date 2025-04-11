@@ -1,5 +1,5 @@
 ---
-title: Manatee Populatins in the Florida Everglades in Comparison to Ocean Temperature
+title: Manatee Populatins in the Florida Everglades in Response to Ocean Temperature
 authors:
   - name: Natasha Zizic 
     affiliation: Colorado State University
