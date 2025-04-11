@@ -1,0 +1,198 @@
+---
+title: ESS 330 - Project Kickoff
+authors:
+  - name: Natasha Zizic 
+    affiliation: Colorado State University
+    roles: writing
+    corresponding: true
+  - name: Genesis Lacy 
+    affiliation: Colorado State University
+    roles: writing
+    corresponding: true
+bibliography: references.bib
+csl: apa.csl
+editor: 
+  markdown: 
+    wrap: sentence
+---
+
+### Exploring Our Data
+
+**Manatee Data:**
+
+We have two sets of manatee data:
+
+The first set is the Manatee Synoptic Survey Observation Locations from The Florida Fish and Wildlife Conservation Commission.
+This data represents a statewide survey of manatee populations from 1991 through 2019.
+The data is taken in the winter months, when manatees typically migrate inland.
+This data covers a long time span, and and wide range in terms of location.
+Unfortunately, the locations in this data set are distinguished by location ID numbers, rather than with latitude and longitude.
+This makes it difficult to spatially visualize the data.
+We will continue to look into this data set to determine if we can find correlating coordinates for each location ID.
+This would allow us to use the data for more visualizations, including maps.
+
+Our second data set is from the US Department of the Interior.
+It comes from a GPS telemetry of 40 manatees in Southwest Florida from 2002 to 2008.
+This time span is not ideal for our research because it is from long ago.
+However, it does have some good qualities.
+It is directly related to an available water temperature data set.
+This will allow us to examine exactly how an increase in ocean temperature will affect the migration patterns of the manatees.
+
+The following maps represent How the manatees In Southwest Florida have migrated over time, from 2002 to 2008.
+This data comes from the US Department of the Interior's GPS telemetry.
+We can see a dispersal of the manatees over time.
+Some are migrating in a northern direction, and others are moving inland.
+This shows that time (and possibly water temperature) is having an impact on their migration patterns.
+
+```{r}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(lubridate)
+```
+
+```{r}
+man2 <- read.csv("~/Downloads/manatee_telemetry.csv")
+```
+
+```{r}
+man2 <- man2 %>%
+  mutate(DATETIME = ymd_hms(DATETIME))
+
+```
+
+```{r}
+old_locs <- man2 %>%
+  group_by(ID) %>%
+  slice_min(order_by = DATETIME, n = 1) %>%
+  ungroup()
+
+new_locs <- man2 %>%
+  group_by(ID) %>%
+  slice_max(order_by = DATETIME, n = 1) %>%
+  ungroup()
+
+```
+
+```{r}
+library(maps)
+
+fl_map <- map_data("state", region = "florida")
+
+ggplot() +
+  geom_polygon(data = fl_map, aes(x = long, y = lat, group = group),
+               fill = "lightgray", color = "black") +
+  geom_point(data = old_locs, aes(x = LONGITUDE, y = LATITUDE), 
+             color = "blue", alpha = 0.6, size = 2) +
+  labs(title = "Oldest Recorded Manatee Locations",
+       x = "Longitude", y = "Latitude") +
+  coord_fixed(1.3) +
+  theme_minimal()
+
+# Newest location map
+ggplot() +
+  geom_polygon(data = fl_map, aes(x = long, y = lat, group = group),
+               fill = "lightgray", color = "black") +
+  geom_point(data = new_locs, aes(x = LONGITUDE, y = LATITUDE), 
+             color = "red", alpha = 0.6, size = 2) +
+  labs(title = "Newest Recorded Manatee Locations",
+       x = "Longitude", y = "Latitude") +
+  coord_fixed(1.3) +
+  theme_minimal()
+
+```
+
+**Water Temperature Data:**
+
+We have two ocean temperature data sets as well:
+
+The first data set was provided by the Florida Coastal Everglades LTER. They conducted a project to measure the impact of ocean temperature on various types of sea grass.
+Although we will not be looking at sea grass, the ocean temperatures from this data set are perfect for our project.
+They span over more than 20 years, and are in the exact location we need to be studying.
+Unfortunately, this data set is inconsistent.
+at some of the stations they were testing from, there are large gaps in the data.
+This makes it appear as through average temperature might be decreasing in some places, but we know this is not true.
+We will need to filter out these problems and make sure everything is aligned correctly.
+
+Our second data set comes from the US Department of the Interior.
+It is the data set that aligns with our second set of manatee data.
+It shows changes in ocean temperature in Southwest Florida.
+The time span overlaps with our manatee data, and extends into 2015.
+The only flaw with this is that it also does not have coordinates, so it can not be used for mapping temperature data.
+
+The following graphs show how average ocean temperatures have changed over a 20 year period.
+This data comes from the Florida Coastal Everglades LTER's sea grass study.
+We can see based on these charts that there has been an increase of average ocean temperatures in this region since 2003.
+
+```{r}
+sea.data <- read.csv("~/Downloads/PHY_Fourqurean_002.csv")
+```
+
+```{r}
+seasum <- sea.data %>%
+  mutate(Year = floor(DecimalYear)) %>%
+  filter(Year >= 2003, Year <= 2023) %>% 
+  filter(SITENAME == "TS/Ph11") %>%
+  group_by(SITENAME, Year) %>%
+  summarize(avg_temp = mean(Temperature, na.rm = TRUE), .groups = "drop")
+
+
+ggplot(seasum, aes(x = Year, y = avg_temp)) +
+  geom_line(size = 1) +
+  geom_point(size = 2) +
+  labs(
+    title = "Average Yearly Temperature at Site 11 (2003–2023)",
+    x = "Year",
+    y = "Average Temperature (°C)",
+    color = "Site"
+  ) +
+  theme_minimal()
+```
+
+@FCE
+
+```{r}
+ggplot(seasum, aes(x = Year, y = avg_temp)) +
+  geom_point(size = 2) +  
+  geom_smooth(method = "lm", se = FALSE, size = 1.2) +  
+  labs(
+    title = "Temperature at Site 11 (2003–2023) with Trendline",
+    x = "Year",
+    y = "Average Temperature (°C)"
+  ) +
+  theme_minimal()
+
+
+```
+
+@FCE
+
+### Methods
+
+The goal of this study is to understand how manatee behavior is impacted by rising ocean temperatures.
+To find this out, we will be comparing various sets of manatee data with corresponding water temperature data.
+Our manatee data will come from \_\_\_\_ and \_\_\_\_.
+The ocean data is from \_\_\_ and \_\_\_ .
+
+Our study area will in Southern Florida, in Everglades National Park as well as the surrounding ocean area.
+Using measurements from multiple stations, we will examine how ocean temperatures have changed over time.
+This time span will be from the early 2000's through the present.
+Available manatee data is much more limited.
+As a result, we will have a shorter time span.
+This should not pose a problem if our water temperature data aligns with our manatee readings.
+
+We will need to manipulate our data to make it more usable for the project.
+The manatee data from \_\_\_ currently comes from all of Florida.
+We will filter it to include only our study area.
+This data set will just be used to examine how manatee numbers have been changing.
+Our second manatee data set from \_\_\_ shows how 40 different manatees moved over a span of 5 years.
+We will first need to organize this data by the manatee IDs and remove any irrelevant or unavailable data.
+Then, since some of the tracking data started later, or ended earlier than others, we will need to make multiple different maps dependent on timescale.
+
+Manipulations to our ocean data will be more simple.
+Both data sets are from our study site, but we may filter our some coordinates if they are too far out.
+The only flaw in these sets are some missing data points or extreme outlires.
+These will be removed.
+
+To test our hypothesis, we will be looking at the locations of various manatees over time, as well as the overall populations of adults and calves.
+This will give us insight into how changing ocean temperatures influence migration patterns and reproductive habits of the manatees in Southern Florida.
