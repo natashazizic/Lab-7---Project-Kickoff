@@ -1,5 +1,5 @@
 ---
-title: ESS 330 - Project Kickoff
+title: Manatee Populatins in the Florida Everglades in Comparison to Ocean Temperature
 authors:
   - name: Natasha Zizic 
     affiliation: Colorado State University
@@ -16,14 +16,24 @@ editor:
     wrap: sentence
 ---
 
+### Introduction
+
+The Everglades in Southern Florida have some of the most biodiverse ecosystems.
+Mangroves provide a multitude of resources, ecosystem services and mitigation against natural disasters @kath. Manatees are large mammals that live in aquatic ecosystems that are key to the processes that occur in those ecosystems.
+Manatees had been added to the endangered species list until 2017 in regards to water quality and malnourishment @FWA but then moved down to the threatened list of species.
+This study will explore if ocean temperature prohibits manatees from birthing in certain areas.
+We hope that this research will further demonstrate how climate change, increased ocean temperatures and global warming might be affecting birth rates.
+We are also interested in whether migration patterns affected by ocean temperature impacts the birth rates.
+Since manatees are endangered species @litt, we hope to learn about these patterns to determine what can be done to protect this species.
+Although there are many factors that impact manatee birth rates, we will be primarily focusing on its correlation specifically to ocean temperature.
+
 ### Exploring Our Data
 
 **Manatee Data:**
 
 We have two sets of manatee data:
 
-The first set is the Manatee Synoptic Survey Observation Locations from The Florida Fish and Wildlife Conservation Commission.
-This data represents a statewide survey of manatee populations from 1991 through 2019.
+The first set is the Manatee Synoptic Survey Observation Locations from The Florida Fish and Wildlife Conservation Commission @FFW. This data represents a statewide survey of manatee populations from 1991 through 2019.
 The data is taken in the winter months, when manatees typically migrate inland.
 This data covers a long time span, and and wide range in terms of location.
 Unfortunately, the locations in this data set are distinguished by location ID numbers, rather than with latitude and longitude.
@@ -31,15 +41,14 @@ This makes it difficult to spatially visualize the data.
 We will continue to look into this data set to determine if we can find correlating coordinates for each location ID.
 This would allow us to use the data for more visualizations, including maps.
 
-Our second data set is from the US Department of the Interior.
-It comes from a GPS telemetry of 40 manatees in Southwest Florida from 2002 to 2008.
+Our second data set is from the US Department of the Interior @GPS. It comes from a GPS telemetry of 40 manatees in Southwest Florida from 2002 to 2008.
 This time span is not ideal for our research because it is from long ago.
 However, it does have some good qualities.
 It is directly related to an available water temperature data set.
 This will allow us to examine exactly how an increase in ocean temperature will affect the migration patterns of the manatees.
 
 The following maps represent How the manatees In Southwest Florida have migrated over time, from 2002 to 2008.
-This data comes from the US Department of the Interior's GPS telemetry.
+This data comes from the US Department of the Interior's GPS telemetry @GPS.
 We can see a dispersal of the manatees over time.
 Some are migrating in a northern direction, and others are moving inland.
 This shows that time (and possibly water temperature) is having an impact on their migration patterns.
@@ -102,11 +111,13 @@ ggplot() +
 
 ```
 
+@GPS
+
 **Water Temperature Data:**
 
 We have two ocean temperature data sets as well:
 
-The first data set was provided by the Florida Coastal Everglades LTER. They conducted a project to measure the impact of ocean temperature on various types of sea grass.
+The first data set was provided by the Florida Coastal Everglades LTER @FCE. They conducted a project to measure the impact of ocean temperature on various types of sea grass.
 Although we will not be looking at sea grass, the ocean temperatures from this data set are perfect for our project.
 They span over more than 20 years, and are in the exact location we need to be studying.
 Unfortunately, this data set is inconsistent.
@@ -114,8 +125,7 @@ at some of the stations they were testing from, there are large gaps in the data
 This makes it appear as through average temperature might be decreasing in some places, but we know this is not true.
 We will need to filter out these problems and make sure everything is aligned correctly.
 
-Our second data set comes from the US Department of the Interior.
-It is the data set that aligns with our second set of manatee data.
+Our second data set comes from the US Department of the Interior @GPS. It is the data set that aligns with our second set of manatee data.
 It shows changes in ocean temperature in Southwest Florida.
 The time span overlaps with our manatee data, and extends into 2015.
 The only flaw with this is that it also does not have coordinates, so it can not be used for mapping temperature data.
@@ -167,14 +177,14 @@ ggplot(seasum, aes(x = Year, y = avg_temp)) +
 
 @FCE
 
-### Methods
+### Preliminary Methods
 
 The goal of this study is to understand how manatee behavior is impacted by rising ocean temperatures.
 To find this out, we will be comparing various sets of manatee data with corresponding water temperature data.
-Our manatee data will come from \_\_\_\_ and \_\_\_\_.
-The ocean data is from \_\_\_ and \_\_\_ .
+Our manatee data will come from @GPS and @FFW.
+The ocean data is from @GPS and @FCE .
 
-Our study area will in Southern Florida, in Everglades National Park as well as the surrounding ocean area.
+Our study area will be in Southern Florida, in Everglades National Park as well as the surrounding ocean area.
 Using measurements from multiple stations, we will examine how ocean temperatures have changed over time.
 This time span will be from the early 2000's through the present.
 Available manatee data is much more limited.
@@ -182,17 +192,21 @@ As a result, we will have a shorter time span.
 This should not pose a problem if our water temperature data aligns with our manatee readings.
 
 We will need to manipulate our data to make it more usable for the project.
-The manatee data from \_\_\_ currently comes from all of Florida.
+The manatee data from @FFW currently comes from all of Florida.
 We will filter it to include only our study area.
 This data set will just be used to examine how manatee numbers have been changing.
-Our second manatee data set from \_\_\_ shows how 40 different manatees moved over a span of 5 years.
+Our second manatee data set from @GPS shows how 40 different manatees moved over a span of 5 years.
 We will first need to organize this data by the manatee IDs and remove any irrelevant or unavailable data.
 Then, since some of the tracking data started later, or ended earlier than others, we will need to make multiple different maps dependent on timescale.
 
 Manipulations to our ocean data will be more simple.
 Both data sets are from our study site, but we may filter our some coordinates if they are too far out.
-The only flaw in these sets are some missing data points or extreme outlires.
+The only flaw in these sets are some missing data points or extreme outliers.
 These will be removed.
 
 To test our hypothesis, we will be looking at the locations of various manatees over time, as well as the overall populations of adults and calves.
 This will give us insight into how changing ocean temperatures influence migration patterns and reproductive habits of the manatees in Southern Florida.
+
+###### \*We will continue to work to find additional data for ocean temperatures that includes latitude and longitude columns, and that directly aligns with manatee our manatee data.
+
+#### References:
