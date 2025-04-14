@@ -14,7 +14,8 @@ csl: apa.csl
 editor: 
   markdown: 
     wrap: sentence
-excute: 
+format: html
+execute: 
   echo: true
 ---
 

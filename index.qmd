@@ -15,7 +15,7 @@ editor:
   markdown: 
     wrap: sentence
 format: html
-excute: 
+execute: 
   echo: true
 ---
 
