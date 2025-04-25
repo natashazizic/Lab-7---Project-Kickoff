@@ -218,11 +218,57 @@ This will give us insight into how changing ocean temperatures influence migrati
 Using our two main datasets, we were able to make conclusions about changes in ocean temperature as well as about manatee migration.
 Due to these results, we can reject our null hypothesis that rising ocean temperatures do not impact migration patterns of Southern Florida’s manatees. 
 
+Most of our information regarding ocean temperatures came from the dataset from Florida Coastal Everglades LTER. WWe used this data to understand how ocean temperatures have changed over time, covering a span of over 20 years.
+We used data from one station, taking yearly averages.
+This resulted in some variation, but there was an overall increase in average ocean temperatures.
+This confirms that these temperatures are rising, likely leading to changes in manatee migration patterns.
+The following graph shows how average temperatures have changed over time, including a rend line to highlight the increase.
+
+```{r}
+ggplot(seasum, aes(x = Year, y = avg_temp)) +
+  geom_point(size = 2) +  
+  geom_smooth(method = "lm", se = FALSE, size = 1.2) +  
+  labs(
+    title = "Temperature at Site 11 (2003–2023) with Trendline",
+    x = "Year",
+    y = "Average Temperature (°C)"
+  ) +
+  theme_minimal()
+```
+
 The dataset from The US Department of the Interior provided information about the movement of manatees using GPS tracking devices.
 We compared manatee locations from the beginning of the study (2002) to locations at the end of the study (2008).
 Considering this is a fairly short time period, the manatees had moved to significantly different locations from 2002 to 2008.
 Some of them had migrated to more northern latitudes, and many of them swam inland, up Florida’s rivers, where water temperatures are more regulated.
 These were both taken at similar times of year, so these results were not due to seasonal migration.
+The following figures represent the manatee locations taken at the beginning and the end of the study.
+
+```{r}
+library(maps)
+
+fl_map <- map_data("state", region = "florida")
+
+ggplot() +
+  geom_polygon(data = fl_map, aes(x = long, y = lat, group = group),
+               fill = "lightgray", color = "black") +
+  geom_point(data = old_locs, aes(x = LONGITUDE, y = LATITUDE), 
+             color = "blue", alpha = 0.6, size = 2) +
+  labs(title = "Oldest Recorded Manatee Locations",
+       x = "Longitude", y = "Latitude") +
+  coord_fixed(1.3) +
+  theme_minimal()
+
+# Newest location map
+ggplot() +
+  geom_polygon(data = fl_map, aes(x = long, y = lat, group = group),
+               fill = "lightgray", color = "black") +
+  geom_point(data = new_locs, aes(x = LONGITUDE, y = LATITUDE), 
+             color = "red", alpha = 0.6, size = 2) +
+  labs(title = "Newest Recorded Manatee Locations",
+       x = "Longitude", y = "Latitude") +
+  coord_fixed(1.3) +
+  theme_minimal()
+```
 
 #### Disclaimer: 
 
