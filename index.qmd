@@ -22,7 +22,8 @@ execute:
 ### Introduction
 
 The Everglades in Southern Florida have some of the most biodiverse ecosystems.
-Mangroves provide a multitude of resources, ecosystem services and mitigation against natural disasters @kath. Manatees are large mammals that live in aquatic ecosystems that are key to the processes that occur in those ecosystems.
+Mangroves provide a multitude of resources, ecosystem services and mitigation against natural disasters @kath.
+Manatees are large mammals that live in aquatic ecosystems that are key to the processes that occur in those ecosystems.
 Manatees had been added to the endangered species list until 2017 in regards to water quality and malnourishment @FWA but then moved down to the threatened list of species.
 This study will explore if ocean temperature prohibits manatees from birthing in certain areas.
 We hope that this research will further demonstrate how climate change, increased ocean temperatures and global warming might be affecting birth rates.
@@ -211,5 +212,26 @@ To test our hypothesis, we will be looking at the locations of various manatees 
 This will give us insight into how changing ocean temperatures influence migration patterns and reproductive habits of the manatees in Southern Florida.
 
 ###### \*We will continue to work to find additional data for ocean temperatures that includes latitude and longitude columns, and that directly aligns with manatee our manatee data.
+
+### Results: 
+
+Using our two main datasets, we were able to make conclusions about changes in ocean temperature as well as about manatee migration.
+Due to these results, we can reject our null hypothesis that rising ocean temperatures do not impact migration patterns of Southern Florida’s manatees. 
+
+The dataset from The US Department of the Interior provided information about the movement of manatees using GPS tracking devices.
+We compared manatee locations from the beginning of the study (2002) to locations at the end of the study (2008).
+Considering this is a fairly short time period, the manatees had moved to significantly different locations from 2002 to 2008.
+Some of them had migrated to more northern latitudes, and many of them swam inland, up Florida’s rivers, where water temperatures are more regulated.
+These were both taken at similar times of year, so these results were not due to seasonal migration.
+
+#### Disclaimer: 
+
+We have not yet completed our methods section and data analysis.
+This is because we are hoping to use methods that we have not yet gone over in class.
+We will be working with Mike to get some help completing these steps.
+Some of these will include creating a time series utilizing seasonality and ocean temperature data, and predicting the movement of the manatees based on our GPS tracking data.
+Once this is complete, we will be able to add to our results, and hopefully generate more usable and statistically significant results.
+
+### Discussion: 
 
 #### References:
