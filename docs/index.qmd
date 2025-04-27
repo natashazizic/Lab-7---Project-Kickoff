@@ -215,14 +215,17 @@ This will give us insight into how changing ocean temperatures influence migrati
 
 ### Results: 
 
-Using our two main datasets, we were able to make conclusions about changes in ocean temperature as well as about manatee migration.
-Due to these results, we can reject our null hypothesis that rising ocean temperatures do not impact migration patterns of Southern Florida’s manatees. 
+We used two main datasets to test our hypothesis, and understand how ocean temperature changes are impacting manatee behavior.
+We concluded that average ocean temperatures around Southern Florida are consistently increasing, likely due to climate change.
+Our manatee data on the other hand, was not enough to make conclusions about their migration patterns, or relate this information to the changes we are seeing in ocean temoperatures.
+Due to these results, we must fail to reject our null hypothesis that rising ocean temperatures do not impact migration patterns of Southern Florida’s manatees. 
 
-Most of our information regarding ocean temperatures came from the dataset from Florida Coastal Everglades LTER. WWe used this data to understand how ocean temperatures have changed over time, covering a span of over 20 years.
-We used data from one station, taking yearly averages.
-This resulted in some variation, but there was an overall increase in average ocean temperatures.
+Most of our information regarding ocean temperatures came from the dataset from Florida Coastal Everglades LTER.
+This was used to understand how temperatures have changed over time, covering a span of over 20 years.
+We took data from one station near the Florida Everglades, and took averages for each year.
+This resulted in some variation, but there was an overall increase in average temperatures.
 This confirms that these temperatures are rising, likely leading to changes in manatee migration patterns.
-The following graph shows how average temperatures have changed over time, including a rend line to highlight the increase.
+The following graph shows how average temperatures have changed over time, including a trend line to highlight the increase.
 
 ```{r}
 ggplot(seasum, aes(x = Year, y = avg_temp)) +
@@ -238,9 +241,7 @@ ggplot(seasum, aes(x = Year, y = avg_temp)) +
 
 The dataset from The US Department of the Interior provided information about the movement of manatees using GPS tracking devices.
 We compared manatee locations from the beginning of the study (2002) to locations at the end of the study (2008).
-Considering this is a fairly short time period, the manatees had moved to significantly different locations from 2002 to 2008.
-Some of them had migrated to more northern latitudes, and many of them swam inland, up Florida’s rivers, where water temperatures are more regulated.
-These were both taken at similar times of year, so these results were not due to seasonal migration.
+These were both taken at similar times of year, so these results were not due to seasonal migration or temperature changes.
 The following figures represent the manatee locations taken at the beginning and the end of the study.
 
 ```{r}
@@ -270,6 +271,10 @@ ggplot() +
   theme_minimal()
 ```
 
+As you can see, there is a lot of variation in manatee locations, but there is a slight increase of manatees in northern and inland locations at the end of the study.
+Based on our ocean temperature data, we can infer that at this time, temperatures were higher on average than they were at the beginning.
+If this is the case, that it would mean that manatees are not very sensitive to rising ocean temperatures, and this does not have a significant impact on migration patterns.
+
 #### Disclaimer: 
 
 We have not yet completed our methods section and data analysis.
@@ -286,7 +291,7 @@ For example, it is suggested that manatees actually need to ingest some fresh wa
 Additionally, an article from the” Journal of Comparative Physiology” suggests that manatees are very sensitive to cold water temperatures as opposed to warmer ones because of their limited “thermoneutral zone” @JCP. One major natural cause of manatee mortality is cold water conditions, and they have not recorded high temperature as a cause  @JCP. This could mean that manatees will be less susceptible to any harm caused by future increases in sea temperatures.
 
 Because of this information, we can infer that manatee migration is not all due to ocean temperature.
-It is true that they migrate inland in the winter months, mainly because ocean temperatures drop @EBS. However, they also need to make this move regardless of temperature in order to meet their biological needs @EBS.because of this, we can conclude that rising ocean temperatures due to climate change will not cause much harm to manatee populations or migration patterns, as long as it does not surpass safe, livable conditions.
+It is true that they migrate inland in the winter months, mainly because ocean temperatures drop @EBS. However, they also need to make this move regardless of temperature in order to meet their biological needs @EBS. Because of this, we can conclude that rising ocean temperatures due to climate change will not cause much harm to manatee populations or migration patterns, as long as it does not surpass safe, livable conditions.
 Instead, slightly higher temperatures could provide them with more flexibility in their migration, and prevent mortality caused by cold conditions. 
 
 By gaining a new understanding of the complexities behind manatee behavior, we can see that our study is inconclusive.
