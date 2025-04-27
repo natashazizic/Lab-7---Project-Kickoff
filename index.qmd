@@ -275,7 +275,7 @@ As you can see, there is a lot of variation in manatee locations, but there is a
 Based on our ocean temperature data, we can infer that at this time, temperatures were higher on average than they were at the beginning.
 If this is the case, that it would mean that manatees are not very sensitive to rising ocean temperatures, and this does not have a significant impact on migration patterns.
 
-#### Disclaimer: 
+**Disclaimer:**
 
 We have not yet completed our methods section and data analysis.
 This is because we are hoping to use methods that we have not yet gone over in class.
